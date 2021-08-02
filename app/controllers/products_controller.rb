@@ -3,13 +3,17 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+  
   def show
   end
+
   def new
     @product = Product.new
   end
+
   def edit
   end
+
   def create
     @product = Product.new(product_params)
     respond_to do |format|
@@ -22,6 +26,7 @@ class ProductsController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -33,6 +38,7 @@ class ProductsController < ApplicationController
       end
     end
   end
+
   def destroy
     @product.destroy
     respond_to do |format|
@@ -44,9 +50,11 @@ class ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
     end
+
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
     end
+
     def who_bought
       @product = Product.find(params[:id])
       respond_to do |format|

@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
   before_action :set_order, only: %i[ show edit update destroy ]
+
   def index
     @orders = Order.paginate page: params[:page], order: 'created_at desc', per_page: 10
     respond_to do |format|
@@ -7,8 +9,10 @@ class OrdersController < ApplicationController
       format.json { render :@orders}
     end
   end
+
   def show
   end
+
   def new
     @cart = current_cart
     if @cart.line_items.empty?
@@ -21,8 +25,10 @@ class OrdersController < ApplicationController
       format.json {render json: @order}
     end
   end
+
   def edit
   end
+
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(current_cart)
@@ -39,6 +45,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       if @order.update(order_params)
@@ -50,6 +57,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
   def destroy
     @order.destroy
     respond_to do |format|
@@ -57,10 +65,12 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
     def set_order
       @order = Order.find(params[:id])
     end
+
     def order_params
       params.require(:order).permit(:name, :adress, :email, :pay_type)
     end
