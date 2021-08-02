@@ -1,15 +1,21 @@
 class LineItemsController < ApplicationController
+  skip_before_action :authorize, only: :create
   before_action :set_line_item, only: %i[ show edit update destroy ]
+  
   def index
     @line_items = LineItem.all
   end
+  
   def show
   end
+
   def new
     @line_item = LineItem.new
   end
+
   def edit
   end
+
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
@@ -17,7 +23,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url }
-        format.js {@current_item = @line_item}
+        format.js { @current_item = @line_item }
         format.json { render @line_item, status: :created, location: @line_item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -25,6 +31,7 @@ class LineItemsController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
@@ -36,6 +43,7 @@ class LineItemsController < ApplicationController
       end
     end
   end
+
   def destroy
     @line_item.destroy
     respond_to do |format|
@@ -47,6 +55,7 @@ class LineItemsController < ApplicationController
     def set_line_item
       @line_item = LineItem.find(params[:id])
     end
+
     def line_item_params
       params.require(:line_item).permit(:product_id, :cart_id)
     end
