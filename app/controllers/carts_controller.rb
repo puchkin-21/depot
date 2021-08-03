@@ -1,8 +1,11 @@
 class CartsController < ApplicationController
+  skip_before_action :authorize, only: [:create, :update, :destroy]
   before_action :set_cart, only: %i[ show edit update destroy ]
+  
   def index
     @carts = Cart.all
   end
+
   def show
     begin
       @cart = Cart.find(params[:id])
@@ -16,11 +19,14 @@ class CartsController < ApplicationController
       end      
     end
   end
+
   def new
     @cart = Cart.new
   end
+
   def edit
   end
+
   def create
     @cart = Cart.new(cart_params)
     respond_to do |format|
@@ -33,6 +39,7 @@ class CartsController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       if @cart.update(cart_params)
@@ -44,6 +51,7 @@ class CartsController < ApplicationController
       end
     end
   end
+
   def destroy
     @cart = current_cart
     @cart.destroy
@@ -57,6 +65,7 @@ class CartsController < ApplicationController
     def set_cart
       @cart = Cart.find(params[:id])
     end
+
     def cart_params
       params.fetch(:cart, {})
     end
