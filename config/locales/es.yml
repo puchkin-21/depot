@@ -27,7 +27,7 @@ en:
         separator: ".,"
         delimiter: ","
         format: "%n&nbsp;%u"
-        
+
   orders:
     new:
       legend: "Por favor, introduzca sus datos"
