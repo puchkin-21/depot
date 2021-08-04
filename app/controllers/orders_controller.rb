@@ -67,6 +67,7 @@ class OrdersController < ApplicationController
   end
 
   private
+
     def set_order
       @order = Order.find(params[:id])
     end
@@ -74,4 +75,5 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :adress, :email, :pay_type)
     end
+    
 end
