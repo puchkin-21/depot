@@ -1,10 +1,14 @@
-<%= form_with(model: order) do |form| %>
-  <% if order.errors.any? %>
+<%= form_with(model: @order) do |form| %>
+  <% if @order.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+    
+      <h2><%= raw t('errors.template.header', count: @order.errors.count,
+          model: t('activerecord.models.order')) %> </h2>
+      <p><%= t('errors.template.body')%></p>
+      
       <ul>
-        <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @order.errors.each do |error| %>
+          <li><%= error %></li>
         <% end %>
       </ul>
     </div>
@@ -14,7 +18,7 @@
     <%= form.text_field :name, size: 40 %>
   </div>
   <div class="field">
-    <%= form.label :adress %>
+    <%= form.label :adress, t('.address_html') %>
     <%= form.text_area :adress, rows: 3, cols: 40 %>
   </div>
   <div class="field">
@@ -23,9 +27,9 @@
   </div>
   <div class="field">
     <%= form.label :pay_type %>
-    <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+    <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: t('.pay_prompt_html') %>
   </div>
   <div class="actions">
-    <%= form.submit 'Place Order' %>
+    <%= form.submit t('.submit') %>
   </div>
 <% end %>

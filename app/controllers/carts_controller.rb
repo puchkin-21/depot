@@ -61,7 +61,9 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
+
     def set_cart
       @cart = Cart.find(params[:id])
     end
@@ -69,4 +71,5 @@ class CartsController < ApplicationController
     def cart_params
       params.fetch(:cart, {})
     end
+    
 end

@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
 
   def index
-    @orders = Order.paginate page: params[:page], order: 'created_at desc', per_page: 10
+    @orders = Order.order(:created_at).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :@orders}
@@ -36,7 +36,8 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to store_url, notice: "Thank you for your order." }
+        OrderNotifier.recevied(@order).deliver
+        format.html { redirect_to store_url, notice: I18n.t('thanks') }
         format.json { render :@order, status: :created, location: @order }
       else
         @cart = current_cart
@@ -67,6 +68,7 @@ class OrdersController < ApplicationController
   end
 
   private
+
     def set_order
       @order = Order.find(params[:id])
     end
@@ -74,4 +76,5 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :adress, :email, :pay_type)
     end
+    
 end
