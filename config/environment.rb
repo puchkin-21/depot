@@ -3,4 +3,6 @@ require_relative "application"
 
 # Initialize the Rails application.
 Rails.application.initialize!
-#config.action_mailer.delivery_method = :smtp | :sendmail
+Depot::Application.configure do
+    config.action_mailer.delivery_method = :smtp 
+end
