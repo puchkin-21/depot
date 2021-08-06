@@ -25,10 +25,13 @@ gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'i18n', '~> 1.8', '>= 1.8.10'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #<<<< not in production gem 'sqlite3'
 end
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
@@ -41,6 +44,7 @@ group :development do
   gem 'pry'
   gem 'rails-i18n'
 end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
@@ -51,3 +55,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'will_paginate', '~> 3.3'
+
+group :production do 
+  gem 'pg', '0.17.1' 
+  gem 'rails_12factor', '0.0.2' 
+end
