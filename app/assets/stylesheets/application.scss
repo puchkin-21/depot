@@ -29,16 +29,20 @@
     background: #198;
     display: flex;
     justify-content: flex-start;
+    
     #main {
-        margin-left: 17em;
+        margin-left: 5em;
         border-left: 21px;
         padding: 1em;
-        background: white;
+        background: #198;
         .depot_form {
             fieldset {
-                background: #efe;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                background: #198;
                 legend {
-                    color: #dfd;
+                    color: #198;
                     background: #141;
                     font-family: sans-serif;
                     padding: 0.2em 1em;
@@ -68,7 +72,7 @@
     #side {
         float: left;
         padding: 1em 2em;
-        width: 13em;
+        width: 10em;
         background: #171;
         form, div {
             display: inline;
