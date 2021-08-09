@@ -20,9 +20,13 @@ table tr td {
         color: #244;
         font-weight: bold;
         font-size: larger;
+        display: flex;
+        flex-direction: row;
     }
     dd {
         margin: 0%;
+        display: flex;
+        flex-direction: row;
     }
 }
 .list_actions {
@@ -32,7 +36,9 @@ table tr td {
 }
 .list_line_even {
     background: #e0f8f8;
+    padding-bottom: 3em;
 }
 .list_line_odd {
-    background: #f8b0f8;
+    background: #c068c0;
+    padding-bottom: 3em;
 }
