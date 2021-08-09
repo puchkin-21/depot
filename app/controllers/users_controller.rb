@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     begin
       @user.destroy
-      flash[:notice] = "Пользователь #{@user.name}удалён"
+      flash[:notice] = "User #{@user.name} has been deleted"
     rescue Exception => e
       flash[:notice] = e.message  
     end
