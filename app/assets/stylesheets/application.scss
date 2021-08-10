@@ -7,13 +7,16 @@
     font: small-caps 40px/40px "Times New Roman", serif;
     color: #282;
     text-align: center;
+
     img {
         float: left;
     }
+
     .locale {
         float: right;
         margin: -0.25em 0.1em;
     }
+
 }
 
 #notice {
@@ -35,20 +38,26 @@
         border-left: 21px;
         padding: 1em;
         background: #198;
+
         .depot_form {
+
             fieldset {
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
                 background: #198;
+            
                 legend {
                     color: #198;
                     background: #141;
                     font-family: sans-serif;
                     padding: 0.2em 1em;
                 }
+
             }
+
             form {
+
                 label {
                     width: 5em;
                     float: left;
@@ -57,47 +66,65 @@
                     margin-right: 0.1em;
                     display: block;
                 }
+
                 select, textarea, input {
                     margin-left: 0.5em;
                 }
+
                 .submit {
                     margin-left: 4em;
                 }
+
                 br {
                     display: none;
                 }
+
             }
+
         }
+
     }
     #side {
         float: left;
         padding: 1em 2em;
         width: 10em;
         background: #171;
+
         form, div {
             display: inline;
         }
+        
         input {
             font-size: small;
         }
+
         #cart {
             font-size: smaller;
             color: white;
+
             table {
                 border-top: 1px dotted #595;
                 border-bottom: 1px dotted #595;
                 margin-bottom: 10px;
             }
+
         }
+
         ul {
             padding: 0;
+
             li {
                 list-style: none;
+
                 a {
                     color: #bfb;
                     font-size: small;
                 }
+
             }
+            
         }
+
     }
+
 }
