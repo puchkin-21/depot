@@ -16,9 +16,11 @@ table tr td {
 
 .list_description {
     width: 60%;
+
     dl {
         margin: 0;
     }
+
     dt {
         color: #244;
         font-weight: bold;
@@ -26,11 +28,13 @@ table tr td {
         display: flex;
         flex-direction: row;
     }
+
     dd {
         margin: 0%;
         display: flex;
         flex-direction: row;
     }
+    
 }
 
 .list_actions {
