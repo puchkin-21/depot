@@ -3,14 +3,17 @@
         border-collapse: collapse;
     }
 }
+
 table tr td {
     padding: 5px;
     vertical-align: top;
 }
+
 .list_image {
     width: 60px;
     height: 70px;
 }
+
 .list_description {
     width: 60%;
     dl {
@@ -29,15 +32,18 @@ table tr td {
         flex-direction: row;
     }
 }
+
 .list_actions {
     font-size: x-small;
     text-align: right;
     padding-left: 1em;
 }
+
 .list_line_even {
     background: #e0f8f8;
     padding-bottom: 3em;
 }
+
 .list_line_odd {
     background: #c068c0;
     padding-bottom: 3em;
